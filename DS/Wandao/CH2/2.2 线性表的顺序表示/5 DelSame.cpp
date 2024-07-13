@@ -4,6 +4,7 @@
 
 #include "../include/SqList.h"
 
+// TODO: review this
 bool DelSame(SqList& L) {
   if (L.length == 0) return false;
 
