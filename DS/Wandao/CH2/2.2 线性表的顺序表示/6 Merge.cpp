@@ -5,32 +5,29 @@
 #include "../include/SqList.h"
 
 // TODO: review this
-SqList Merge(SqList& L1, SqList& L2) {
-  SqList L;
-  InitList(L);
+bool Merge(SqList L1, SqList L2, SqList& L3) {
+  if (L1.length + L2.length > L3.length) return false;
 
-  int i = 0;
-  int j = 0;
+  int i = 0, j = 0, k = 0;
 
   // Merge
   while (i < L1.length && j < L2.length) {
     if (L1.data[i] <= L2.data[j]) {
-      ListInsert(L, L.length++, L1.data[i]);
-      i++;
+      L3.data[k++] = L1.data[i++];
     } else {
-      ListInsert(L, L.length++, L2.data[j]);
-      j++;
+      L3.data[k++] = L2.data[j++];
     }
   }
 
   // Copy the remaining elements
   while (i < L1.length) {
-    L.data[L.length++] = L1.data[i++];
+    L3.data[k++] = L1.data[i++];
   }
-
   while (j < L2.length) {
-    L.data[L.length++] = L2.data[j++];
+    L3.data[k++] = L2.data[j++];
   }
 
-  return L;
+  L3.length = k;
+
+  return true;
 }

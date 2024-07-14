@@ -12,7 +12,7 @@ bool DelSame(SqList& L) {
 
   for (int i = 0; i < L.length; i++) {
     // if L.data[i] == L.data[i + 1], then skip this element
-    if (L.data[i] != L.data[i + 1]) {
+    if (i == L.length - 1 || L.data[i] != L.data[i + 1]) {
       L.data[temp] = L.data[i];
       temp++;
     }
@@ -22,3 +22,16 @@ bool DelSame(SqList& L) {
 
   return true;
 }
+
+// WanDao`s version
+// bool DelSame(SqList& L) {
+//   if (L.length == 0) return false;
+//   int i, j;
+//   for (i = 0, j = 1; j < L.length; j++) {
+//     if (L.data[i] != L.data[j]) {
+//       L.data[++i] = L.data[j];
+//     }
+//   }
+//   L.length = i + 1;
+//   return true;
+// }

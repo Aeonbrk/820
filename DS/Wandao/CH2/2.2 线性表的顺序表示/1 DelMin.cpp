@@ -14,6 +14,7 @@ ElemType DelMin(SqList &L) {
 
   ElemType min = L.data[0];
   int pos = 0;
+
   for (int i = 1; i < L.length; i++) {
     if (min < L.data[i]) {
       min = L.data[i];
@@ -22,5 +23,7 @@ ElemType DelMin(SqList &L) {
   }
 
   L.data[pos] = L.data[L.length - 1];
+  L.length--;
+
   return min;
 }

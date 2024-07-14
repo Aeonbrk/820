@@ -7,8 +7,6 @@
 #include "../include/SqList.h"
 
 // TODO: review this
-
-/**
 int BinarySearch(const SqList& L, ElemType x) {
   int low = 0, high = L.length - 1;
   while (low <= high) {
@@ -26,15 +24,13 @@ int BinarySearch(const SqList& L, ElemType x) {
 
 void SwapOrInsert(SqList& L, ElemType x) {
   int pos = BinarySearch(L, x);
-  if (pos != -1) {
-    // 找到了，交换该元素与后继元素的位置
-    if (pos < L.length - 1) {
-      ElemType temp = L.data[pos];
-      L.data[pos] = L.data[pos + 1];
-      L.data[pos + 1] = temp;
-    }
+  if (pos != -1 && pos < L.length - 1) {
+    // Founded
+    ElemType temp = L.data[pos];
+    L.data[pos] = L.data[pos + 1];
+    L.data[pos + 1] = temp;
   } else {
-    // 未找到，找到插入的位置
+    // Not Founded
     int i;
     for (i = L.length - 1; i >= 0 && L.data[i] > x; i--) {
       L.data[i + 1] = L.data[i];
@@ -42,27 +38,4 @@ void SwapOrInsert(SqList& L, ElemType x) {
     L.data[i + 1] = x;
     L.length++;
   }
-}
-*/
-
-void SwapOrInsert(SqList& L, ElemType x) {
-  ElemType temp;
-  // 初始化为 -1，以防止所有元素都大于 x
-  // 这里一开始没考虑到，下次注意
-  int posMin = -1;
-
-  for (int i = 0; i + 1 < L.length; i++) {
-    if (L.data[i] == x) {
-      temp = L.data[i];
-      L.data[i] = L.data[i + 1];
-      L.data[i + 1] = temp;
-
-      break;  // 找到并交换后立即退出循环
-    }
-    if (L.data[i] < x) {
-      posMin = i;  // 更新插入位置
-    }
-  }
-
-  ListInsert(L, posMin + 1, x);
 }
