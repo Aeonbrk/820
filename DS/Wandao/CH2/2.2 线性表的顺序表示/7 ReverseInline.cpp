@@ -3,21 +3,15 @@
 // 编写一个函数，将数组中两个顺序表的位置互换，即将b1,b2,b3......bn放在a1,a2,a3......am的前面
 
 // TODO: review this
+#include <algorithm>
 #include <iostream>
 
 #include "../include/SqList.h"
 
-// Swap the positions of two elements in the array
-void Swap(ElemType &a, ElemType &b) {
-  ElemType temp = a;
-  a = b;
-  b = temp;
-}
-
 // Reverse the elements in the specified range of the array
 void Reverse(SqList &L, int start, int end) {
   while (start < end) {
-    Swap(L.data[start], L.data[end]);
+    std::swap(L.data[start], L.data[end]);
     start++;
     end--;
   }

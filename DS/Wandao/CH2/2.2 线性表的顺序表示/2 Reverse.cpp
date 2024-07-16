@@ -12,3 +12,15 @@ void Reverse(SqList& L) {
     L.data[L.length - i - 1] = temp;
   }
 }
+
+// Second Version
+
+// void Reverse(SqList& L) {
+//   int start = 0;
+//   int end = L.length - 1;
+//   while (start < end) {
+//     std::swap(L.data[start], L.data[end]);
+//     start++;
+//     end--;
+//   }
+// }
