@@ -24,7 +24,4 @@ void findRecentAncestor(int a[], int n, int i, int j) {
       j = (j - 1) / 2;
     }
   }
-
-  // 输出最近公共祖先节点的值
-  cout << "The value of the recent common ancestor is: " << a[i] << endl;
 }
